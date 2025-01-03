@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Invitation</title>
     <style>
-        /* Basic reset and background setup */
+        /* Reset and basic styling */
         * {
             margin: 0;
             padding: 0;
@@ -18,78 +18,61 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: url('MASTER PLAN.jpg') no-repeat center center fixed;
+            min-height: 100vh;
+            margin: 0;
             background-size: cover;
             color: #ffffff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Container styling */
         .container {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            height: inherit;
-            max-width: 500px;
-            position: relative;
+            padding: 30px;
+            border-radius: 10px;
+            width: 50%;
+            max-width: 400px;
+            position: static;
+            /* Changed from fixed */
         }
 
+
         h1 {
-            font-size: 3em;
-            font-family: 'Courier New', Courier, monospace;
-            color: #a50000;
+            font-size: 2.5em;
+            color: #fcff67;
             margin-bottom: 20px;
-            text-align: center;
-            margin-top: 80px;
-            position: relative;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #fcff67;
+            margin-bottom: 20px;
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 4.2em;
+            color: #ffffff;
             margin-bottom: 30px;
-            color: #a50000;
-            margin-top: 80px;
-            position: relative;
         }
 
-        /* Button styling */
         .btn {
-            padding: 12px 25px;
-            background-color: #9e2000;
-            color: white;
+            padding: 12px 20px;
+            background-color: #a50000;
+            color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1.2em;
-            margin-top: 100px;
-            position: relative;
-            animation: bounce 2s infinite;
-        }
-
-        /* Bounce animation keyframes */
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+            font-size: 1em;
+            align-items: flex-end;
+            margin-top: 50px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .btn:hover {
-            background-color: #b67b7b;
-            animation: none;
+            background-color: #b63131;
             transform: scale(1.05);
         }
 
-        /* Video styling */
+        /* Background video */
         .background-video {
             position: absolute;
             top: 0;
@@ -100,23 +83,8 @@
             z-index: -1;
         }
 
-        /* Responsive styling */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-
-            p {
-                font-size: 1.1em;
-            }
-
-            .btn {
-                padding: 10px 20px;
-                font-size: 1.1em;
-            }
-        }
-
-        @media (max-width: 480px) {
             h1 {
                 font-size: 2em;
             }
@@ -126,8 +94,32 @@
             }
 
             .btn {
-                padding: 8px 15px;
-                font-size: 1em;
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                height: inherit;
+                padding: 20px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            .btn {
+                font-size: 0.8em;
+                padding: 8px 12px;
             }
         }
     </style>
@@ -135,22 +127,21 @@
 
 <body>
     <div class="container">
-        <!-- Background video -->
         <video class="background-video" autoplay muted loop>
             <source src="video-motion.mp4" type="video/mp4">
         </video>
 
-        <!-- Invitation content -->
-        <h1>Invitation</h1>
-        <p>MR.Mao Mengheang</p>
+        <!-- Background music -->
+        <audio autoplay loop>
+            <source src="GMENGZ_-_CAN_I_[_OFFICIAL_VIDEO_]_[_YouConvert.net_].mp3" type="audio/mpeg">
+        </audio>
+
+        <h1>ពិធីឡើងគេហដ្ឋាន</h1>
+        <p>Mr. Mao Mengheang</p>
+        <h2>សូមគោរពអញ្ជើញ</h2>
+
         <button class="btn" onclick="window.location.href='https://www.example.com/rsvp-form'">Click Here</button>
     </div>
-
-    <!-- Background Music -->
-    <audio autoplay loop>
-        <source src="https://open.spotify.com/track/1fzAuUVbzlhZ1lJAx9PtY6?si=1f8c8b9452014611" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
 </body>
 
 </html>
