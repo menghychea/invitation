@@ -59,21 +59,42 @@
             color: rgb(133, 108, 78);
         }
 
+        /* Button styling */
         .btn {
-            padding: 15px 25px;
-            background-color: #a50000;
-            color: #fff;
+            padding: 12px 25px;
+            background-color: #9e2000;
+            color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 1.6rem;
-            margin-top: 30px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1.2em;
+            margin-top: 100px;
+            position: relative;
+            margin-top: 400px;
+            animation: bounce 2s infinite;
+            /* Apply bounce animation */
+        }
+
+        /* Bounce animation keyframes */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+                /* Move the button up and down */
+            }
         }
 
         .btn:hover {
-            background-color: #b63131;
+            background-color: #b67b7b;
+            animation: none;
+            /* Stop bounce when hovered */
             transform: scale(1.05);
+            /* Slightly grow the button on hover */
         }
 
         .background-video {
@@ -134,12 +155,9 @@
 <body>
     <div class="container">
         <video class="background-video" autoplay muted loop>
-            <source src="Flower_Bloom.mp4" type="video/mp4">
+            <source src="OPTION2.mp4" type="video/mp4">
         </video>
-        <h1>You're Invited!</h1>
-        <p>To celebrate the special day of</p>
-        <h2>Mr. Mao Mengheang</h2>
-        <p>Save the date and join us for an unforgettable celebration.</p>
+
         <button class="btn" onclick="window.location.href='rsvp.html'">Click Here</button>
 
     </div>
