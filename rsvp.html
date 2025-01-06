@@ -9,7 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Fira+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <title>RSVP Page</title>
+    <title>Birthday Invitation</title>
     <style>
         * {
             margin: 0;
@@ -17,62 +17,20 @@
             box-sizing: border-box;
         }
 
-        body {
+        body,
+        html {
+            height: 100%;
             font-family: "Fira Sans", Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
-            background-size: cover;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .container {
-            text-align: center;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
-
-            /* Semi-transparent white background */
-
-
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            line-height: 1.5;
-            color: #666;
-        }
-
-        .btn {
-            padding: 12px 20px;
-            background-color: #a50000;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1.4rem;
-            margin-top: 20px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .btn:hover {
-            background-color: #b63131;
-            transform: scale(1.05);
+            overflow-x: hidden;
+            overflow-y: auto;
+            /* Allow vertical scrolling */
         }
 
         .background-video {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -81,75 +39,144 @@
             z-index: -1;
         }
 
-        @media (max-width: 1024px) {
-            h1 {
-                font-size: 2.2rem;
-            }
+        .photo-gallery {
+            display: flex;
+            justify-content: space-between;
+            /* Space between the images */
+            align-items: center;
+            gap: 10px;
+            /* Add spacing between photos */
+            margin-top: 15px;
+            flex-wrap: wrap;
+            /* Ensure responsiveness */
+        }
 
-            p {
-                font-size: 1.4rem;
-                margin-bottom: 18px;
-            }
+        .photo-gallery img {
+            width: calc(33% - 10px);
+            /* Each image takes 1/3 of the available width, minus spacing */
+            border-radius: 10px;
+            /* Optional: Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            /* Optional: Add shadow */
+            object-fit: cover;
+            /* Ensures images maintain aspect ratio */
+        }
 
-            .btn {
-                font-size: 1.3rem;
-                padding: 12px 18px;
+        @media (max-width: 500px) {
+            .photo-gallery img {
+                width: calc(50% - 10px);
+                /* Switch to 2 per row on smaller screens */
             }
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
+        @media (max-width: 400px) {
+            .photo-gallery img {
+                width: 100%;
+                /* Stack images on smaller screens */
+            }
+        }
+
+
+        .container {
+            text-align: center;
+            padding: 30px;
+            margin: 0 auto;
+            max-width: 800px;
+            min-height: 100%;
+            padding-top: 100px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #772330;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            opacity: 0;
+
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        /* Button styling */
+        .btn {
+            padding: 12px 25px;
+            background-color: #9e2000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 100px;
+            position: relative;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
 
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .btn:hover {
+            background-color: #b67b7b;
+            animation: none;
+            transform: scale(1.05);
+        }
+
+        .image-section {
+            margin: 30px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
             }
 
             p {
-                font-size: 1.3rem;
-                margin-bottom: 15px;
+                font-size: 1.2rem;
+            }
+
+            .btn {
+                font-size: 1.4rem;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
             }
 
             .btn {
                 font-size: 1.2rem;
                 padding: 10px 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                width: 100%;
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-                margin-bottom: 15px;
-            }
-
-            p {
-                font-size: 1.2rem;
-            }
-
-            .btn {
-                font-size: 1.1rem;
-                padding: 8px 12px;
-            }
-        }
-
-        @media (max-width: 320px) {
-            h1 {
-                font-size: 1.6rem;
-            }
-
-            p {
-                font-size: 1rem;
-            }
-
-            .btn {
-                font-size: 1rem;
-                padding: 8px 10px;
             }
         }
     </style>
@@ -161,14 +188,58 @@
         Your browser does not support the video tag.
     </video>
     <div class="container">
-        <h1>RSVP Confirmation</h1>
-        <p>Thank you for your interest in joining the celebration for Mr. Mao Mengheang's special day!</p>
-        <p><strong>Date:</strong> January 12, 2025</p>
-        <p><strong>Time:</strong> 7:00 PM</p>
-        <p><strong>Location:</strong> TH Residence</p>
-        <p>Please confirm your attendance below.</p>
-        <button class="btn" onclick="window.location.href='index.html'">Go Back</button>
+        <h1 class="fade-in">RSVP Confirmation</h1>
+        <p class="fade-in">Thank you for your interest in joining the celebration for Mr. Mao Mengheang's special day!
+        </p>
+        <p class="fade-in"><strong>Date:</strong> January 12, 2025</p>
+        <p class="fade-in"><strong>Time:</strong> 7:00 PM</p>
+        <p class="fade-in"><strong>Location:</strong> TH Residence</p>
+        <p class="fade-in">Please confirm your attendance below.</p>
+
+        <div class="image-section fade-in" id="section1">
+            <h1>Event Highlights</h1>
+            <div class="photo-gallery">
+                <img src="photo(6).jpg" alt="Event Highlight 1">
+                <img src="photo(8).jpg" alt="Event Highlight 2">
+                <img src="photo(10).jpg" alt="Event Highlight 3">
+            </div>
+            <p>Join us for an evening filled with joy, laughter, and unforgettable memories!</p>
+        </div>
+
+
+        <div class="image-section fade-in" id="section2">
+            <h1>Venue Details</h1>
+            <img src="venue.jpg" alt="Venue Details">
+            <p>TH Residence offers an exquisite atmosphere to make the celebration truly special.</p>
+        </div>
+
+        <audio autoplay loop>
+            <source src="Chill-song.MP3" type="audio/mpeg">
+        </audio>
+
+        <button class="btn fade-in" onclick="window.location.href='index.html'">Go Back</button>
     </div>
+
+    <script>
+        // Intersection Observer API to detect when the section comes into view
+        const elements = document.querySelectorAll('.fade-in');
+        const observerOptions = {
+            root: null,
+            threshold: 0.3 // Trigger when 30% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 
 </html>
